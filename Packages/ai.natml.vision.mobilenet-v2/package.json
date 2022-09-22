@@ -1,0 +1,24 @@
+{
+    "name": "ai.natml.vision.mobilenet-v2",
+    "version": "1.0.0",
+    "displayName": "MobileNet v2",
+    "description": "Realtime image classification in Unity Engine.",
+    "unity": "2021.2",
+    "dependencies": {
+        "ai.natml.natml": "1.0.18"
+    },
+    "keywords": [
+        "natml",
+        "machine learning",
+        "ml",
+        "aritificial intelligence",
+        "classifier"
+    ],
+    "author": {
+        "name": "NatML",
+        "email": "hi@natml.ai",
+        "url": "https://github.com/natmlx"
+    },
+    "license": "Apache-2.0",
+    "repository": "github:natml-hub/MobileNet-v2"
+}
