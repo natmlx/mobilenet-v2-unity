@@ -1,6 +1,23 @@
 # MobileNet v2
 Realtime object classification machine learning model optimized for mobile applications.
 
+## Installing MobileNet v2
+Add the following items to your Unity project's `Packages/manifest.json`:
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "NatML",
+      "url": "https://registry.npmjs.com",
+      "scopes": ["ai.natml"]
+    }
+  ],
+  "dependencies": {
+    "ai.natml.vision.mobilenet-v2": "1.0.0"
+  }
+}
+```
+
 ## Classifying an Image
 First, create the MobileNet v2 predictor:
 ```csharp
@@ -15,7 +32,7 @@ var predictor = new MobileNetv2Predictor(model, modelData.labels);
 Then create an image feature:
 ```csharp
 // Create image feature
-Texture2D image = ...;  // Can also be a `WebCamTexture` or pixel buffer
+Texture2D image = ...;
 var input = new MLImageFeature(image);
 // Set the normalization and aspect mode
 (input.mean, input.std) = modelData.normalization;
