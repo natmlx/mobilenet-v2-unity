@@ -4,10 +4,13 @@
 
 Realtime image classification with MobileNet v2.
 
-## Setup Instructions
-Retrieve your access key from [NatML Hub](https://hub.natml.ai/profile) and add it to your Project Settings. Note that using this predictor requires an active [NatML Cloud](https://www.natml.ai/pricing) subscription:
+## Running the Sample
+Retrieve your access key from [NatML Hub](https://hub.natml.ai/profile) and add it to your Project Settings. Note that running the sample code requires an active [NatML Cloud](https://www.natml.ai/pricing) subscription:
 
 ![project settings](https://github.com/natmlx/NatDevice/raw/main/.media/key.png)
+
+## Using the Predictor in a Different Project
+[See the predictor README for more details](Packages/ai.natml.vision.mobilenet-v2/README.md).
 
 ## Requirements
 - Unity 2021.2+

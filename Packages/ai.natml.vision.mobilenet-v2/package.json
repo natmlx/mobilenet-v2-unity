@@ -19,6 +19,6 @@
         "email": "hi@natml.ai",
         "url": "https://github.com/natmlx"
     },
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": "github:natml-hub/MobileNet-v2"
 }
