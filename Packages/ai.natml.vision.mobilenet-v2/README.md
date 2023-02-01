@@ -13,7 +13,7 @@ Add the following items to your Unity project's `Packages/manifest.json`:
     }
   ],
   "dependencies": {
-    "ai.natml.vision.mobilenet-v2": "1.0.0"
+    "ai.natml.vision.mobilenet-v2": "1.0.1"
   }
 }
 ```
@@ -21,38 +21,27 @@ Add the following items to your Unity project's `Packages/manifest.json`:
 ## Classifying an Image
 First, create the MobileNet v2 predictor:
 ```csharp
-// Fetch the model data from NatML Hub
-var modelData = await MLModelData.FromHub("@natsuite/mobilenet-v2");
-// Deserialize the model
-var model = modelData.Deserialize();
-// Create the MobileNet v2 predictor
-var predictor = new MobileNetv2Predictor(model, modelData.labels);
+// Create the model
+var model = await MLEdgeModel.Create("@natsuite/mobilenet-v2");
+// Create the predictor
+var predictor = new MobileNetv2Predictor(model);
 ```
 
-Then create an image feature:
+Then make predictions on images:
 ```csharp
-// Create image feature
+// Given an image...
 Texture2D image = ...;
-var input = new MLImageFeature(image);
-// Set the normalization and aspect mode
-(input.mean, input.std) = modelData.normalization;
-input.aspectMode = modelData.aspectMode;
-```
-
-Finally, classify the image:
-```csharp
 // Classify the image
-(string label, float confidence) result = predictor.Predict(input);
+(string label, float confidence) result = predictor.Predict(image);
 ```
 
 ## Requirements
 - Unity 2021.2+
 
 ## Quick Tips
-- Join the [NatML community on Discord](https://hub.natml.ai/community).
+- Join the [NatML community on Discord](https://natml.ai/community).
 - Discover more ML models on [NatML Hub](https://hub.natml.ai).
-- See the [NatML documentation](https://docs.natml.ai/unity).
-- Discuss [NatML on Unity Forums](https://forum.unity.com/threads/natml-machine-learning-runtime.1109339/).
+- See the [NatML documentation](https://docs.natml.ai/natml).
 - Contact us at [hi@natml.ai](mailto:hi@natml.ai).
 
 Thank you very much!

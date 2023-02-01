@@ -1,6 +1,6 @@
 /* 
 *   MobileNet v2
-*   Copyright (c) 2022 NatML Inc. All Rights Reserved.
+*   Copyright © 2023 NatML Inc. All Rights Reserved.
 */
 
 namespace NatML.Vision {
@@ -18,19 +18,10 @@ namespace NatML.Vision {
 
         #region --Client API--
         /// <summary>
-        /// Classification labels.
-        /// </summary>
-        public readonly string[] labels;
-
-        /// <summary>
         /// Create the MobileNet v2 classification predictor.
         /// </summary>
-        /// <param name="model">MobileNet v2 ML model.</param>
-        /// <param name="labels">Classification labels.</param>
-        public MobileNetv2Predictor (MLModel model, string[] labels) {
-            this.model = model as MLEdgeModel;
-            this.labels = labels;
-        }
+        /// <param name="model">MobileNet v2 model.</param>
+        public MobileNetv2Predictor (MLEdgeModel model) => this.model = model as MLEdgeModel;
 
         /// <summary>
         /// Classify an image.
@@ -45,6 +36,11 @@ namespace NatML.Vision {
             var input = inputs[0];
             if (!MLImageType.FromType(input.type))
                 throw new ArgumentException(@"MobileNet v2 predictor expects an an array or image feature", nameof(inputs));
+            // Apply image pre-processing
+            if (input is MLImageFeature imageFeature) {
+                (imageFeature.mean, imageFeature.std) = model.normalization;
+                imageFeature.aspectMode = model.aspectMode;
+            }
             // Predict
             var inputType = model.inputs[0];
             using var inputFeature = (input as IMLEdgeFeature).Create(inputType);
@@ -55,7 +51,7 @@ namespace NatML.Vision {
             for (int i = 1, ilen = logits.shape[1]; i < ilen; ++i)
                 argMax = logits[0,i] > logits[0,argMax] ? i : argMax;
             // Return
-            var result = (labels[argMax], logits[argMax]);
+            var result = (model.labels[argMax], logits[argMax]);
             return result;
         }
         #endregion

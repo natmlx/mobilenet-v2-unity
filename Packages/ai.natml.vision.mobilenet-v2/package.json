@@ -1,11 +1,11 @@
 {
     "name": "ai.natml.vision.mobilenet-v2",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "MobileNet v2",
     "description": "Realtime image classification in Unity Engine.",
     "unity": "2021.2",
     "dependencies": {
-        "ai.natml.natml": "1.0.18"
+        "ai.natml.natml": "1.1.0"
     },
     "keywords": [
         "natml",
