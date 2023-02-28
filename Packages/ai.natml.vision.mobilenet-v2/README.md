@@ -13,7 +13,7 @@ Add the following items to your Unity project's `Packages/manifest.json`:
     }
   ],
   "dependencies": {
-    "ai.natml.vision.mobilenet-v2": "1.0.1"
+    "ai.natml.vision.mobilenet-v2": "1.0.2"
   }
 }
 ```
@@ -21,10 +21,8 @@ Add the following items to your Unity project's `Packages/manifest.json`:
 ## Classifying an Image
 First, create the MobileNet v2 predictor:
 ```csharp
-// Create the model
-var model = await MLEdgeModel.Create("@natsuite/mobilenet-v2");
-// Create the predictor
-var predictor = new MobileNetv2Predictor(model);
+// Create the MobileNet v2 predictor
+var predictor = await MobileNetv2Predictor.Create();
 ```
 
 Then make predictions on images:
@@ -32,7 +30,9 @@ Then make predictions on images:
 // Given an image...
 Texture2D image = ...;
 // Classify the image
-(string label, float confidence) result = predictor.Predict(image);
+MobileNetv2Predictor.Label result = predictor.Predict(image);
+// Use the result
+Debug.Log($"Model predicted {result.label} with confidence {result.confidence}");
 ```
 
 ## Requirements
@@ -41,7 +41,7 @@ Texture2D image = ...;
 ## Quick Tips
 - Join the [NatML community on Discord](https://natml.ai/community).
 - Discover more ML models on [NatML Hub](https://hub.natml.ai).
-- See the [NatML documentation](https://docs.natml.ai/natml).
+- See the [NatML documentation](https://docs.natml.ai/unity).
 - Contact us at [hi@natml.ai](mailto:hi@natml.ai).
 
 Thank you very much!

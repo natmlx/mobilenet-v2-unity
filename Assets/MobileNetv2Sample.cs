@@ -19,14 +19,11 @@ namespace NatML.Examples {
         public Text labelText;
         public Text scoreText;
 
-        private MLEdgeModel model;
         private MobileNetv2Predictor predictor;
 
         private async void Start () {
-            // Create the model
-            model = await MLEdgeModel.Create("@natsuite/mobilenet-v2");
             // Create the predictor
-            predictor = new MobileNetv2Predictor(model);
+            predictor = await MobileNetv2Predictor.Create();
             // Start listening for camera stream
             cameraManager.OnCameraFrame.AddListener(OnCameraFrame);
         }
@@ -42,8 +39,8 @@ namespace NatML.Examples {
         void OnDisable () {
             // Stop listening for camera frames
             cameraManager.OnCameraFrame.RemoveListener(OnCameraFrame);
-            // Dispose model
-            model?.Dispose();
+            // Dispose the predictor
+            predictor?.Dispose();
         }
     }
 }
