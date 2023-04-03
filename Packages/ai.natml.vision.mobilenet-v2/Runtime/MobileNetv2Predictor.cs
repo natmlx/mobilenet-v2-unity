@@ -17,7 +17,7 @@ namespace NatML.Vision {
     /// </summary>
     public sealed class MobileNetv2Predictor : IMLPredictor<MobileNetv2Predictor.Label> {
 
-        #region --Client API--
+        #region --Types--
         /// <summary>
         /// Class label with confidence score.
         /// </summary>
@@ -38,6 +38,14 @@ namespace NatML.Vision {
                 confidence = this.confidence;
             }
         }
+        #endregion
+
+
+        #region --Client API--
+        /// <summary>
+        /// Predictor tag.
+        /// </summary>
+        public const string Tag = "@natsuite/mobilenet-v2";
 
         /// <summary>
         /// Classify an image.
@@ -78,7 +86,7 @@ namespace NatML.Vision {
             MLEdgeModel.Configuration configuration = null,
             string accessKey = null
         ) {
-            var model = await MLEdgeModel.Create("@natsuite/mobilenet-v2", configuration, accessKey);
+            var model = await MLEdgeModel.Create(Tag, configuration, accessKey);
             var predictor = new MobileNetv2Predictor(model);
             return predictor;
         }

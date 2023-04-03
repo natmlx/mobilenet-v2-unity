@@ -13,7 +13,7 @@ Add the following items to your Unity project's `Packages/manifest.json`:
     }
   ],
   "dependencies": {
-    "ai.natml.vision.mobilenet-v2": "1.0.2"
+    "ai.natml.vision.mobilenet-v2": "1.0.3"
   }
 }
 ```
