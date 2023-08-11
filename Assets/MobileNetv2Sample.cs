@@ -8,7 +8,7 @@ namespace NatML.Examples {
     using UnityEngine;
     using UnityEngine.UI;
     using NatML.Vision;
-    using NatML.VideoKit;
+    using VideoKit;
 
     public class MobileNetv2Sample : MonoBehaviour {
 

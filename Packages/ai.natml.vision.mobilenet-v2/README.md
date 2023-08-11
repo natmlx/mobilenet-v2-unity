@@ -13,7 +13,7 @@ Add the following items to your Unity project's `Packages/manifest.json`:
     }
   ],
   "dependencies": {
-    "ai.natml.vision.mobilenet-v2": "1.0.3"
+    "ai.natml.vision.mobilenet-v2": "1.0.4"
   }
 }
 ```
@@ -36,7 +36,7 @@ Debug.Log($"Model predicted {result.label} with confidence {result.confidence}")
 ```
 
 ## Requirements
-- Unity 2021.2+
+- Unity 2022.3+
 
 ## Quick Tips
 - Join the [NatML community on Discord](https://natml.ai/community).

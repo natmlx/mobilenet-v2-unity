@@ -1,3 +1,6 @@
+## 1.0.4
++ Upgraded to NatML 1.1.15.
+
 ## 1.0.3
 + Added `MobileNetv2Predictor.Tag` constant string to enable model embedding.
 + Upgraded to NatML 1.1.4.
